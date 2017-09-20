@@ -8,5 +8,6 @@ import dagger.Component;
 @HeroesScope
 @Component(dependencies = {AppComponent.class}, modules = {HeroesModule.class})
 public interface HereosComponent {
+    //Inject all components to HeroesListActivity
     void inject(HeroesListActivity heroesActivity);
 }

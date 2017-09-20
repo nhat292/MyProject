@@ -1,8 +1,10 @@
 package com.nguyenvannhat.myproject.screens.main;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.nguyenvannhat.myproject.application.MyApplication;
 import com.nguyenvannhat.myproject.models.Hero;
 import com.nguyenvannhat.myproject.screens.base.BaseActivity;
 import com.nguyenvannhat.myproject.screens.main.core.HeroesPresenter;
@@ -19,11 +21,13 @@ public class HeroesListActivity extends BaseActivity {
     HeroesView view;
     @Inject
     HeroesPresenter presenter;
+    @Inject
+    SharedPreferences prefs;
 
     @Override
-    public void onCreate( Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DaggerHereosComponent.builder().heroesModule(new HeroesModule(this)).build().inject(this);
+        DaggerHereosComponent.builder().appComponent(MyApplication.getNetComponent()).heroesModule(new HeroesModule(this)).build().inject(this);
         setContentView(view.getView());
         presenter.onCreate();
     }

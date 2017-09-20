@@ -55,7 +55,7 @@ public class NetworkModule {
         return RxJavaCallAdapterFactory.createWithScheduler(AppRxSchedulers.INTERNET_SCHEDULERS);
     }
 
-
+    @AppScope
     @Provides
     GsonConverterFactory provideGsonClient() {
         return GsonConverterFactory.create();
